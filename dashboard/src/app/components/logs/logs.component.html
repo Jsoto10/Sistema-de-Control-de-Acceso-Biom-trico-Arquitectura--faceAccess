@@ -1,0 +1,49 @@
+<div class="logs-container">
+  <div class="header">
+    <h2>Historial de Accesos</h2>
+    <p>Auditoría completa de entradas y salidas</p>
+  </div>
+
+  <table class="logs-table">
+    <thead>
+      <tr>
+        <th>Foto</th>
+        <th>Usuario</th>
+        <th>Fecha y Hora</th>
+        <th>Tipo</th>
+        <th>Resultado</th>
+        <th>Confianza</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let log of logs">
+        <td>
+          <img [src]="'http://127.0.0.1:8000/' + log.usuario?.foto_path" 
+               class="log-avatar" 
+               *ngIf="log.usuario?.foto_path"
+               onerror="this.src='assets/no-image.png'">
+          <span class="avatar-placeholder" *ngIf="!log.usuario?.foto_path">👤</span>
+        </td>
+        <td>
+          <div class="user-cell">
+            <span class="full-name">{{ log.usuario?.nombre }} {{ log.usuario?.apellidos }}</span>
+            <span class="user-id">@{{ log.usuario?.usuario }}</span>
+          </div>
+        </td>
+        <td>{{ log.timestamp | date:'medium' }}</td>
+        <td>
+          <span class="type-pill" [ngClass]="log.tipo">{{ log.tipo | uppercase }}</span>
+        </td>
+        <td>
+          <span class="res-pill" [ngClass]="log.resultado">{{ log.resultado | uppercase }}</span>
+        </td>
+        <td>
+          <div class="confidence-bar" *ngIf="log.confidence">
+            <div class="fill" [style.width.%]="log.confidence * 100"></div>
+            <span>{{ log.confidence | percent }}</span>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

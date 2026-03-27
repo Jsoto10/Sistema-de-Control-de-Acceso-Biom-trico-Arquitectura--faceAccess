@@ -1,0 +1,63 @@
+.users-container, .logs-container {
+  padding: 30px;
+}
+
+.header {
+  margin-bottom: 30px;
+}
+
+.header h2 {
+  font-size: 2rem;
+  color: #1e272e;
+  margin-bottom: 5px;
+}
+
+table {
+  width: 100%;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  border-collapse: collapse;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+th, td {
+  padding: 15px 20px;
+  text-align: left;
+  border-bottom: 1px solid #f1f2f6;
+}
+
+th {
+  background: #f8f9fa;
+  color: #b2bec3;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.status-pill, .type-pill, .res-pill {
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.status-pill.active { background: #e3fcef; color: #00875a; }
+.status-pill.inactive { background: #ffebe6; color: #bf2600; }
+
+.type-pill.entrada { background: #e3f2fd; color: #1976d2; }
+.type-pill.salida { background: #f3e5f5; color: #7b1fa2; }
+
+.res-pill.exito { color: #27ae60; }
+.res-pill.fallido { color: #e74c3c; }
+
+.btn-edit {
+  background: #f1f2f6;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.btn-edit:hover { background: #dfe4ea; }

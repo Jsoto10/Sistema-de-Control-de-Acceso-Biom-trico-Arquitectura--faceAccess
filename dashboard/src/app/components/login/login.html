@@ -1,0 +1,41 @@
+<div class="login-page">
+  <div class="login-card">
+    <div class="login-header">
+      <div class="logo-container">
+        <span class="logo-icon">🛡️</span>
+      </div>
+      <h1>FaceAccess PRO</h1>
+      <p>Sistema de Seguridad Biométrica</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>Usuario Administrador</label>
+        <div class="input-wrapper">
+          <span class="input-icon">👤</span>
+          <input type="text" formControlName="username" placeholder="Ingresa tu usuario">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Contraseña</label>
+        <div class="input-wrapper">
+          <span class="input-icon">🔒</span>
+          <input type="password" formControlName="password" placeholder="••••••••">
+        </div>
+      </div>
+
+      <div class="error-msg" *ngIf="error">
+        ⚠️ {{ error }}
+      </div>
+
+      <button type="submit" [disabled]="!loginForm.valid || loading" class="btn-login">
+        {{ loading ? 'Iniciando sesión...' : 'Entrar al Dashboard' }}
+      </button>
+
+      <div class="login-footer">
+        <p>© 2026 FaceAccess Security Systems</p>
+      </div>
+    </form>
+  </div>
+</div>

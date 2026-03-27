@@ -1,0 +1,22 @@
+<nav class="side-nav">
+  <div class="logo">
+    <div class="logo-icon"></div>
+    <span>BIO-SECURE</span>
+  </div>
+  
+  <ul class="nav-links">
+    <li><a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
+    <li><a routerLink="/users" routerLinkActive="active">Usuarios</a></li>
+    <li><a routerLink="/logs" routerLinkActive="active">Historial</a></li>
+    <li><a routerLink="/alerts" routerLinkActive="active">Alertas</a></li>
+  </ul>
+
+  <div class="user-profile">
+    <div class="avatar"></div>
+    <span>Administrador</span>
+  </div>
+</nav>
+
+<main class="content">
+  <router-outlet></router-outlet>
+</main>

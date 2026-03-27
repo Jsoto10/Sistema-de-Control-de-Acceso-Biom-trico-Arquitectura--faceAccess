@@ -1,0 +1,94 @@
+<div class="alerts-container">
+  <div class="header">
+    <h1>🚨 Centro de Investigación de Alertas</h1>
+    <p>Monitoreo de seguridad y gestión de intrusos en tiempo real</p>
+  </div>
+
+  <!-- Filtros Rápidos -->
+  <div class="filters">
+    <button class="filter-btn active">Todas</button>
+    <button class="filter-btn danger">Riesgo Alto</button>
+    <button class="filter-btn warning">Riesgo Medio</button>
+    <button class="filter-btn success">Bajo / Desconocido</button>
+  </div>
+
+  <!-- Reemplazar con Grid de Alertas -->
+  <div class="alerts-grid">
+    <div *ngFor="let alert of alerts" class="alert-card" [class.high-risk]="alert.nivel_riesgo === 'Alto'">
+      <div class="card-media">
+        <img [src]="'http://localhost:8000' + alert.imagen_path" alt="Intruso">
+        <div class="risk-badge" [attr.data-risk]="alert.nivel_riesgo">
+          {{ alert.nivel_riesgo }}
+        </div>
+      </div>
+      
+      <div class="card-body">
+        <div class="card-header">
+          <span class="timestamp">🕒 {{ alert.timestamp | date:'short' }}</span>
+          <span class="type-tag">{{ alert.tipo }}</span>
+        </div>
+        <h3>{{ alert.descripcion }}</h3>
+        
+        <div class="actions">
+          <button (click)="openInvestigation(alert)" class="btn-investigate">
+            🔍 Investigar
+          </button>
+          <button *ngIf="alert.video_path" class="btn-video" (click)="playEvidence(alert)">
+            🎬 Ver Video
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Investigación PRO -->
+  <div class="modal" *ngIf="selectedAlert" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h2>Detalle de Incidente #{{selectedAlert.id}}</h2>
+        <button class="close-btn" (click)="closeModal()">×</button>
+      </div>
+      
+      <div class="modal-body">
+        <div class="evidence-view">
+          <video *ngIf="selectedAlert.video_path; else onlyImage" 
+                 [src]="'http://localhost:8000' + selectedAlert.video_path" 
+                 controls autoplay class="evidence-media"></video>
+          <ng-template #onlyImage>
+            <img [src]="'http://localhost:8000' + selectedAlert.imagen_path" class="evidence-media">
+          </ng-template>
+        </div>
+
+        <div class="evidence-details">
+          <div class="detail-row">
+            <span>🔴 Nivel de Riesgo:</span>
+            <strong [class]="'risk-' + selectedAlert.nivel_riesgo.toLowerCase()">
+              {{selectedAlert.nivel_riesgo}}
+            </strong>
+          </div>
+          <div class="detail-row">
+            <span>📅 Fecha/Hora:</span>
+            <strong>{{selectedAlert.timestamp | date:'medium'}}</strong>
+          </div>
+          <div class="detail-row">
+            <span>📝 Descripción:</span>
+            <p>{{selectedAlert.descripcion}}</p>
+          </div>
+          
+          <div class="investigation-tools">
+            <h4>Herramientas de Investigación:</h4>
+            <div class="tools-grid">
+              <a [href]="'https://www.google.com/searchbyimage?image_url=http://localhost:8000' + selectedAlert.imagen_path" 
+                 target="_blank" class="tool-btn">
+                🌐 Buscar en Google Images
+              </a>
+              <button class="tool-btn" (click)="markAsReviewed(selectedAlert)">
+                ✅ Marcar como Revisado
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

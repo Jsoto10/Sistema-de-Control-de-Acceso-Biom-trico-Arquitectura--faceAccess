@@ -1,0 +1,92 @@
+<div class="registration-container">
+  <div class="header">
+    <h2>🚀 Registro de Usuario Nuevo</h2>
+    <p>Completa los datos y captura la biometría facial</p>
+  </div>
+
+  <div class="main-grid">
+    <!-- Formulario -->
+    <div class="form-card">
+      <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" formControlName="nombre" placeholder="Ej: Juan">
+          </div>
+          <div class="form-group">
+            <label>Apellidos</label>
+            <input type="text" formControlName="apellidos" placeholder="Ej: Pérez">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>DNI</label>
+            <input type="text" formControlName="dni" placeholder="8 dígitos">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Celular</label>
+            <input type="text" formControlName="celular" placeholder="+51 ...">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" formControlName="correo" placeholder="correo@ejemplo.com">
+          </div>
+        </div>
+
+        <button type="submit" [disabled]="!regForm.valid || !registrationComplete" class="btn-submit">
+          Registrar Usuario Bio-Seguro
+        </button>
+      </form>
+    </div>
+
+    <!-- Cámara -->
+    <div class="camera-card">
+      <div class="video-container">
+        <!-- El video SIEMPRE debe estar para que funcione el escaneo -->
+        <video #video autoplay playsinline></video>
+        <canvas #canvas class="hidden"></canvas>
+        
+        <div class="overlay" *ngIf="!registrationComplete">
+          <div class="face-id-guide" [class.active]="isCapturing">
+            <div class="progress-ring">
+              <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="48" class="bg-ring"></circle>
+                <circle cx="50" cy="50" r="48" class="active-ring" [style.stroke-dashoffset]="calculateOffset()"></circle>
+              </svg>
+            </div>
+            <div class="direction-indicator" [class]="currentPose" *ngIf="isCapturing">
+              {{ poseMessage }}
+            </div>
+            <div class="face-frame"></div>
+          </div>
+        </div>
+
+        <!-- Feedback de éxito -->
+        <div class="success-overlay" *ngIf="registrationComplete">
+          <div class="check-icon">✓</div>
+          <p>Escaneo Completo</p>
+        </div>
+      </div>
+
+      <div class="camera-controls">
+        <button *ngIf="!isCapturing && !registrationComplete" (click)="startFaceID()" class="btn-start">
+          🚀 Iniciar Escaneo FaceID
+        </button>
+        <div *ngIf="isCapturing" class="capturing-status">
+          <span class="pulse-dot"></span> Procesando: <strong>{{ currentPose | uppercase }}</strong>
+        </div>
+        <button *ngIf="registrationComplete" (click)="resetFaceID()" class="btn-retake">
+          🔄 Reiniciar Escaneo
+        </button>
+      </div>
+
+      <div class="status-badge" [class.success]="registrationComplete">
+        {{ registrationComplete ? '✅ Biometría lista para registro' : '📷 Esperando inicio de escaneo' }}
+      </div>
+    </div>
+  </div>
+</div>

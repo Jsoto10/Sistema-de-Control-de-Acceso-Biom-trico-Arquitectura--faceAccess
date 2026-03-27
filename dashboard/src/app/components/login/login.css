@@ -1,0 +1,137 @@
+.login-page {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.login-card {
+  background: white;
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 400px;
+  animation: slide-up 0.6s ease-out;
+}
+
+@keyframes slide-up {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.logo-container {
+  width: 80px;
+  height: 80px;
+  background: #f0f7ff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+}
+
+.logo-icon {
+  font-size: 2.5rem;
+}
+
+.login-header h1 {
+  color: #1a1a1a;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+}
+
+.login-header p {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 1rem;
+  font-size: 1.2rem;
+  opacity: 0.6;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 0.8rem 1rem 0.8rem 3rem;
+  border: 1.5px solid #eee;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.input-wrapper input:focus {
+  border-color: #2a5298;
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(42, 82, 152, 0.1);
+}
+
+.error-msg {
+  background: #fff5f5;
+  color: #e53e3e;
+  padding: 0.8rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #fed7d7;
+}
+
+.btn-login {
+  width: 100%;
+  padding: 1rem;
+  background: #2a5298;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.btn-login:hover {
+  background: #1e3c72;
+  transform: translateY(-2px);
+}
+
+.btn-login:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.login-footer {
+  margin-top: 2rem;
+  text-align: center;
+  color: #999;
+  font-size: 0.8rem;
+}

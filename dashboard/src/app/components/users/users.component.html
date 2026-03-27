@@ -1,0 +1,57 @@
+<div class="users-container">
+  <div class="header">
+    <h2>Gestión de Usuarios</h2>
+    <p>Lista de empleados registrados en el sistema</p>
+  </div>
+
+  <table class="users-table">
+    <thead>
+      <tr>
+        <th>Foto</th>
+        <th>Nombre</th>
+        <th>Usuario</th>
+        <th>DNI</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>
+          <img [src]="'http://127.0.0.1:8000/' + user.foto_path" class="user-avatar" *ngIf="user.foto_path">
+          <span class="avatar-placeholder" *ngIf="!user.foto_path">👤</span>
+        </td>
+        <td>
+          <div class="user-info-cell">
+            <span class="name">{{ user.nombre }} {{ user.apellidos }}</span>
+            <span class="email">{{ user.correo }}</span>
+          </div>
+        </td>
+        <td>@{{ user.usuario }}</td>
+        <td>{{ user.dni || 'N/A' }}</td>
+        <td>
+          <span class="status-pill" [ngClass]="user.activo ? 'active' : 'inactive'">
+            {{ user.activo ? 'PERMITIDO' : 'DENEGADO' }}
+          </span>
+        </td>
+        <td>
+          <div class="actions">
+            <button class="btn-action pulse" 
+                    [class.disable]="user.activo" 
+                    [class.enable]="!user.activo"
+                    (click)="toggleStatus(user)">
+              {{ user.activo ? '🚫 Deshabilitar' : '✅ Habilitar' }}
+            </button>
+            <button class="btn-action delete" (click)="deleteUser(user.id)">
+              🗑️ Eliminar
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="users.length === 0" class="empty-state">
+    No hay usuarios registrados.
+  </div>
+</div>

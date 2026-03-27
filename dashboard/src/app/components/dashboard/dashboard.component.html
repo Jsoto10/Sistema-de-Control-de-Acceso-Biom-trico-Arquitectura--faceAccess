@@ -1,0 +1,67 @@
+<div class="dashboard-container">
+  <header class="main-header">
+    <h1>Panel de Control Biométrico <span class="badge-pro">PRO</span></h1>
+    <p class="subtitle">Monitoreo de Acceso en Tiempo Real</p>
+  </header>
+
+  <!-- Métricas Rápidas -->
+  <section class="stats-grid">
+    <div class="stat-card">
+      <div class="icon users-icon"></div>
+      <div class="details">
+        <h3>{{ stats.users }}</h3>
+        <p>Usuarios</p>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="icon access-icon"></div>
+      <div class="details">
+        <h3>{{ stats.accesses }}</h3>
+        <p>Accesos Hoy</p>
+      </div>
+    </div>
+    <div class="stat-card emergency">
+      <div class="icon alert-icon"></div>
+      <div class="details">
+        <h3>{{ stats.alerts }}</h3>
+        <p>Alertas Críticas</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Monitor -->
+  <main class="monitor-section">
+    <div class="monitor-header">
+      <h2>Monitor de Eventos en Vivo</h2>
+      <div class="pulse-container">
+        <span class="pulse-dot"></span>
+        <span>Conectado</span>
+      </div>
+    </div>
+
+    <div class="event-list">
+      <div *ngFor="let event of latestEvents" class="event-item" [ngClass]="event.type">
+        <div class="event-time">{{ event.timestamp }}</div>
+        <div class="event-content">
+          <div *ngIf="event.type === 'access'">
+            <strong>{{ event.user_name }}</strong> - {{ event.access_type | uppercase }}
+            <small class="meta"> (Confianza: {{ event.confidence_pct }}% | {{ event.sensor_id }})</small>
+          </div>
+          <div *ngIf="event.type === 'alert' || event.type === 'access_denied'" class="text-danger">
+            <strong>ALERTA:</strong> {{ event.description || event.message || 'Intento Desconocido' }}
+            <small class="meta" *ngIf="event.sensor_id"> ({{ event.sensor_id }})</small>
+          </div>
+        </div>
+        <div class="event-status">
+          <span class="status-pill" [ngClass]="event.status">
+            {{ event.status === 'success' ? 'PERMITIDO' : 'DENEGADO' }}
+          </span>
+        </div>
+      </div>
+
+      <div *ngIf="latestEvents.length === 0" class="empty-state">
+        Esperando detecciones del sensor...
+      </div>
+    </div>
+  </main>
+</div>

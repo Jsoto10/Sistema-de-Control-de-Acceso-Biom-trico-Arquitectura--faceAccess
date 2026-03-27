@@ -1,0 +1,53 @@
+<!-- Layout para Usuario Logueado (Dashboard) - Se oculta si estamos en /login -->
+<div class="app-layout" *ngIf="auth.isLoggedIn() && !isLoginRoute">
+  <aside class="sidebar">
+    <!-- ... mismo contenido ... -->
+    <div class="logo">
+      <span class="icon">🛡️</span>
+      <span class="text">FaceAccess PRO</span>
+    </div>
+    
+    <div class="user-info">
+      <span class="avatar">👤</span>
+      <span class="username">{{ auth.getUserName() }}</span>
+    </div>
+
+    <nav class="nav-links">
+      <a routerLink="/dashboard" routerLinkActive="active" class="nav-item">
+        <span class="nav-icon">📊</span> Dashboard
+      </a>
+      <a routerLink="/users" routerLinkActive="active" class="nav-item">
+        <span class="nav-icon">👥</span> Usuarios
+      </a>
+      <a routerLink="/register" routerLinkActive="active" class="nav-item register-highlight">
+        <span class="nav-icon">✨</span> Registrar Nuevo
+      </a>
+      <div class="nav-divider"></div>
+      <a routerLink="/logs" routerLinkActive="active" class="nav-item">
+        <span class="nav-icon">📜</span> Historial
+      </a>
+      <a routerLink="/alerts" routerLinkActive="active" class="nav-item">
+        <span class="nav-icon">⚠️</span> Alertas
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button (click)="logout()" class="btn-logout">
+         🚪 Cerrar Sesión
+      </button>
+      <div class="system-status">
+        <p>Sistema Activo</p>
+        <div class="pulse-indicator"></div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="content-area">
+    <router-outlet></router-outlet>
+  </main>
+</div>
+
+<!-- Layout para Login o cuando el usuario no está logueado -->
+<div class="login-layout" *ngIf="!auth.isLoggedIn() || isLoginRoute">
+  <router-outlet></router-outlet>
+</div>

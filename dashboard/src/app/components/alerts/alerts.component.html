@@ -1,0 +1,27 @@
+<div class="alerts-container">
+  <div class="header">
+    <h2>Centro de Alertas de Seguridad</h2>
+    <p>Rostros no identificados capturados por el sistema</p>
+  </div>
+
+  <div class="alerts-grid">
+    <div *ngFor="let alert of alerts" class="alert-card">
+      <div class="image-container">
+        <img [src]="getFullImagePath(alert.imagen_path)" alt="Intruso">
+        <div class="alert-badge">{{ alert.tipo | uppercase }}</div>
+      </div>
+      <div class="alert-info">
+        <span class="timestamp">{{ alert.timestamp | date:'medium' }}</span>
+        <p class="description">{{ alert.descripcion }}</p>
+        <div class="actions">
+          <button class="btn-check">Marcar como Revisado</button>
+          <button class="btn-search" (click)="searchOnInternet(getFullImagePath(alert.imagen_path))">🔎 Buscar en Google</button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="alerts.length === 0" class="empty-alerts">
+      No hay alertas de seguridad pendientes.
+    </div>
+  </div>
+</div>

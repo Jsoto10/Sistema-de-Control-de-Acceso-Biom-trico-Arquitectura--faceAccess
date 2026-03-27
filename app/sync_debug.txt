@@ -1,0 +1,31 @@
+2026-01-19 21:26:58.478362: Iniciando sincronización...
+2026-01-19 21:26:58.478362: Archivos encontrados: ['cley.jpg', 'j12.jpg', 'jjs.jpg', 'jsc.jpg', 'jssss.jpg', 'lisc.jpg', 'sas.jpg']
+2026-01-19 21:26:58.478362: Procesando archivo: cley.jpg
+2026-01-19 21:26:58.478362: Dimensiones imagen: (220, 220, 3), Tipo: uint8
+2026-01-19 21:26:58.478362: Dimensiones RGB: (220, 220, 3), Tipo: uint8
+2026-01-19 21:26:58.478362: ERROR CRÍTICO procesando cley.jpg: Unsupported image type, must be 8bit gray or RGB image.
+2026-01-19 21:26:58.478362: Procesando archivo: j12.jpg
+2026-01-19 21:26:58.486543: Dimensiones imagen: (240, 240, 3), Tipo: uint8
+2026-01-19 21:26:58.486543: Dimensiones RGB: (240, 240, 3), Tipo: uint8
+2026-01-19 21:26:58.490401: ERROR CRÍTICO procesando j12.jpg: Unsupported image type, must be 8bit gray or RGB image.
+2026-01-19 21:26:58.491413: Procesando archivo: jjs.jpg
+2026-01-19 21:26:58.492418: Dimensiones imagen: (480, 640, 3), Tipo: uint8
+2026-01-19 21:26:58.496472: Dimensiones RGB: (480, 640, 3), Tipo: uint8
+2026-01-19 21:26:58.497472: ERROR CRÍTICO procesando jjs.jpg: Unsupported image type, must be 8bit gray or RGB image.
+2026-01-19 21:26:58.497472: Procesando archivo: jsc.jpg
+2026-01-19 21:26:58.498472: Dimensiones imagen: (480, 640, 3), Tipo: uint8
+2026-01-19 21:26:58.498472: Dimensiones RGB: (480, 640, 3), Tipo: uint8
+2026-01-19 21:26:58.498472: ERROR CRÍTICO procesando jsc.jpg: Unsupported image type, must be 8bit gray or RGB image.
+2026-01-19 21:26:58.498472: Procesando archivo: jssss.jpg
+2026-01-19 21:26:58.498472: Dimensiones imagen: (240, 240, 3), Tipo: uint8
+2026-01-19 21:26:58.502754: Dimensiones RGB: (240, 240, 3), Tipo: uint8
+2026-01-19 21:26:58.503083: ERROR CRÍTICO procesando jssss.jpg: Unsupported image type, must be 8bit gray or RGB image.
+2026-01-19 21:26:58.503587: Procesando archivo: lisc.jpg
+2026-01-19 21:26:58.505215: Dimensiones imagen: (480, 640, 3), Tipo: uint8
+2026-01-19 21:26:58.505215: Dimensiones RGB: (480, 640, 3), Tipo: uint8
+2026-01-19 21:26:58.505215: ERROR CRÍTICO procesando lisc.jpg: Unsupported image type, must be 8bit gray or RGB image.
+2026-01-19 21:26:58.505215: Procesando archivo: sas.jpg
+2026-01-19 21:26:58.505215: Dimensiones imagen: (240, 240, 3), Tipo: uint8
+2026-01-19 21:26:58.507680: Dimensiones RGB: (240, 240, 3), Tipo: uint8
+2026-01-19 21:26:58.507680: ERROR CRÍTICO procesando sas.jpg: Unsupported image type, must be 8bit gray or RGB image.
+2026-01-19 21:26:58.507680: Datos actualizados. No se requirieron cambios.
